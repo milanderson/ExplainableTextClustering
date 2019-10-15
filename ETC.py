@@ -36,7 +36,7 @@ class ETC():
     def _clean(self, cutoff_margin):
         #TODO(Mike): split and lemmatize documents
 
-        #TODO(Mike): remove common words ('a', 'and', 'the' etc.)
+        #TODO(Mike): remove common words ('a', 'and', 'the', etc.)
 
         pass
 
@@ -74,7 +74,8 @@ class ETC():
         pass
 
     '''
-        Query a fitted document set
+        Search a fitted document set and retrieve the relevant documents and their description
+            @query - a plain text string
     '''
     def find(self, query):
         if not self._fitted:
