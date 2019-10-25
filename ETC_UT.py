@@ -3,8 +3,8 @@ import sys, traceback
 #TODO(Mike): import test data
 
 usage = '''
-            \tUsage: python ETC_UT.py
-            \t\t [test_code ...]
+            \tUsage: python ETC_UT.py [test_code, ...]
+            \t\t [test_code, ...]
             \t\t     test_code:   The ID of a unit test to run. Default all.
         '''
 
