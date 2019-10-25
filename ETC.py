@@ -5,6 +5,7 @@
             etc.fit()
             description, cluster = etc.find("Is there water on Mars?")
 '''
+import spacy
 class ETC():
 
     '''
@@ -33,10 +34,30 @@ class ETC():
         Splits a document into words, lemmatizes and then culls common words
             @cutoff_margin - where to cutoff common words
     '''
-    def _clean(self, cutoff_margin):
+    def _clean(self, cutoff_margin, document):
         #TODO(Mike): split and lemmatize documents
-
+        
+        nlp = spacy.load('en_core_web_sm')
+        docs = [nlp(article) for article in articles]
+        
+        # create tokens
+        token_doc = [''] * len(docs)
+        for i in range(len(docs)):
+            token_doc[i] = [token.text  for token in docs[i]]
+            
+        # lemmetization
+        lemmas = [''] * len(docs)
+        for i in range(len(token_doc)):
+            lemmas[i] = [token.lemma_ for token in docs[i]]
+            
+            
         #TODO(Mike): remove common words ('a', 'and', 'the', etc.)
+        # in-built stop words in spacy    
+        stop_words = spacy.lang.en.stop_words.STOP_WORDS
+        no_stop_lemmas =[''] * len(docs)
+        for i in range(len(docs)):
+            no_stop_lemmas[i] = [lemma for lemma in lemmas if lemma.isalpha() and lemma not in stop_words]
+
 
         pass
 
