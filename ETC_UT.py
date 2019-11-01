@@ -1,5 +1,6 @@
 from ETC import ETC
 import sys, traceback
+import unittest
 #TODO(Mike): import test data
 
 usage = '''
@@ -8,7 +9,7 @@ usage = '''
             \t\t     test_code:   The ID of a unit test to run. Default all.
         '''
 
-class ETCUnitTester():
+class ETCUnitTester(unittest.TestCase):
 
     def __init__(self):
         #TODO(Mike): thread test data into ETC
@@ -49,21 +50,31 @@ class ETCUnitTester():
                 func = getattr(self, '_test' + testList[curTest], None)
 
     #TODO(Mike): define test
-    def _test1(self):
-        pass
+    def test_clean_1(self):
+                        test_sentance = "Sneha has 3 chocolates!!"
+                        test = etc._clean(test_sentance)
+                        expected = ["sneha", "3", "chocolate"]
+                        self.assertEqual(test,expected)
+                                      
 
     #TODO(Mike): define test
-    def _test2(self):
-        pass
+    def test_clean_2(self):
+                        test_sentance = "These Chocolates are imported from U.S.A"
+                        test = etc._clean(test_sentance)
+                        expected = ["chocolate", "import", "U.S.A"]
+                        self.assertEqual(test,expected)
+                        
+                        
 
     #TODO(Mike): define test
     def _test3(self):
         pass
 
+if __name__ == '__main__':
+    unittest.main()         
+#if __name__ == "__main__":
+    #if len(sys.argv) < 1:
+        #print(usage)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 1:
-        print(usage)
-
-    unitTester = ETCUnitTester()
-    unitTester.runTests(sys.argv[2:])
+    #unitTester = ETCUnitTester()
+    #unitTester.runTests(sys.argv[2:])
