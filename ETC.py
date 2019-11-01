@@ -62,7 +62,7 @@ class ETC():
             no_stop_lemmas[i] = [lemma for lemma in lemmas if  lemma not in stop_words]
 
 
-        pass
+        return no_stop_lemmas
 
     '''
         Turns a document list (a vector of vectors of words) into a vector of matrices
