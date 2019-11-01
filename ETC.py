@@ -34,7 +34,8 @@ class ETC():
         Splits a document into words, lemmatizes and then culls common words
             @cutoff_margin - where to cutoff common words
     '''
-    def _clean(self, cutoff_margin, corpus):
+    # ask about , cutoff_margin
+    def _clean(self, corpus):
         #TODO(Mike): split and lemmatize documents
         
         nlp = spacy.load('en_core_web_sm')
