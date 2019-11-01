@@ -46,17 +46,19 @@ class ETC():
             token_doc[i] = [token.text  for token in docs[i]]
             
         # lemmetization
+        # removing punctuation using is_punct
         lemmas = [''] * len(docs)
         for i in range(len(token_doc)):
-            lemmas[i] = [token.lemma_ for token in docs[i]]
+            lemmas[i] = [token.lemma_ for token in docs[i] if not token.is_punct]
             
             
         #TODO(Mike): remove common words ('a', 'and', 'the', etc.)
-        # in-built stop words in spacy    
+        # in-built stop words in spacy 
+        
         stop_words = spacy.lang.en.stop_words.STOP_WORDS
         no_stop_lemmas =[''] * len(docs)
         for i in range(len(docs)):
-            no_stop_lemmas[i] = [lemma for lemma in lemmas if lemma.isalpha() and lemma not in stop_words]
+            no_stop_lemmas[i] = [lemma for lemma in lemmas if  lemma not in stop_words]
 
 
         pass
